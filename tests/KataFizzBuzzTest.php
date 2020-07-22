@@ -11,6 +11,8 @@ class KataFizzBuzzTest extends TestCase
         $kata = new Kata();
 
         $this->assertEquals(1, $kata->fizzbuzz(1));
+        $this->assertEquals(31, $kata->fizzbuzz(31));
+        $this->assertEquals(94, $kata->fizzbuzz(94));
     }
 
     public function testCanReplaceMultiplesOfThreeWithFizz()
