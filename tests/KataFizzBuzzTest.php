@@ -12,4 +12,11 @@ class KataFizzBuzzTest extends TestCase
 
         $this->assertEquals(1, $kata->fizzbuzz(1));
     }
+
+    public function testCanReplaceMultiplesOfThreeWithFizz()
+    {
+        $kata = new Kata();
+
+        $this->assertEquals('Fizz', $kata->fizzbuzz(3));
+    }
 }
