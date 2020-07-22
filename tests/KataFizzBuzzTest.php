@@ -18,5 +18,7 @@ class KataFizzBuzzTest extends TestCase
         $kata = new Kata();
 
         $this->assertEquals('Fizz', $kata->fizzbuzz(3));
+        $this->assertEquals('Fizz', $kata->fizzbuzz(45));
+        $this->assertEquals('Fizz', $kata->fizzbuzz(99));
     }
 }
