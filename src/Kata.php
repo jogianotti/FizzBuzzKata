@@ -9,6 +9,10 @@ class Kata
             return 'Fizz';
         }
 
+        if (0 === $int % 5) {
+            return 'Buzz';
+        }
+
         return 1;
     }
 }
