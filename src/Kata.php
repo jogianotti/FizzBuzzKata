@@ -17,6 +17,6 @@ class Kata
             return 'Buzz';
         }
 
-        return 1;
+        return $int;
     }
 }
