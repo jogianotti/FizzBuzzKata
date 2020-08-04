@@ -1,6 +1,6 @@
 <?php
 
-require_once "src/Kata.php";
+require_once __DIR__ . "/../src/Kata.php";
 
 use PHPUnit\Framework\TestCase;
 
@@ -10,35 +10,85 @@ class KataFizzBuzzTest extends TestCase
     {
         $kata = new Kata();
 
-        $this->assertEquals(1, $kata->fizzbuzz(1));
         $this->assertEquals(31, $kata->fizzbuzz(31));
-        $this->assertEquals(94, $kata->fizzbuzz(94));
     }
 
     public function testCanReplaceMultiplesOfThreeWithFizz()
     {
         $kata = new Kata();
 
-        $this->assertEquals('Fizz', $kata->fizzbuzz(3));
-        $this->assertEquals('Fizz', $kata->fizzbuzz(48));
-        $this->assertEquals('Fizz', $kata->fizzbuzz(99));
+        $number = $this->generateMultipleOfThree();
+
+        $this->assertEquals('Fizz', $kata->fizzbuzz($number));
     }
 
-    public function testCanReplaceMiltiplesOfFiveWithBuzz()
+    public function testCanReplaceMultiplesOfFiveWithBuzz()
     {
         $kata = new Kata();
 
-        $this->assertEquals('Buzz', $kata->fizzbuzz(5));
-        $this->assertEquals('Buzz', $kata->fizzbuzz(25));
-        $this->assertEquals('Buzz', $kata->fizzbuzz(80));
+        $number = $this->generateMultipleOfFive();
+
+        $this->assertEquals('Buzz', $kata->fizzbuzz($number));
     }
 
-    public function testCanReplaceMúltiplesOfThreeAndFiveWithFizzBuzz()
+    public function testCanReplaceMultiplesOfThreeAndFiveWithFizzBuzz()
     {
         $kata = new Kata();
 
-        $this->assertEquals('FizzBuzz', $kata->fizzbuzz(15));
-        $this->assertEquals('FizzBuzz', $kata->fizzbuzz(45));
-        $this->assertEquals('FizzBuzz', $kata->fizzbuzz(75));
+        $number = $this->generateMultipleOfThreeAndFive();
+
+        $this->assertEquals('FizzBuzz', $kata->fizzbuzz($number));
+    }
+
+    private function generateMultipleOfThree(): int
+    {
+        do {
+            $random = rand(1, 99);
+        } while(!$this->isOnlyMultipleOfThree($random));
+
+        return $random;
+    }
+
+    private function generateMultipleOfFive(): int
+    {
+        do {
+            $random = rand(1, 99);
+        } while(!$this->isOnlyMultipleOfFive($random));
+
+        return $random;
+    }
+
+    private function generateMultipleOfThreeAndFive(): int
+    {
+        do {
+            $random = rand(1, 99);
+        } while(!$this->isMultipleOfThreeAndFive($random));
+
+        return $random;
+    }
+
+    private function isMultipleOfThree(int $number): bool
+    {
+        return $number % 3 === 0;
+    }
+
+    private function isMultipleOfFive(int $number): bool
+    {
+        return $number % 5 === 0;
+    }
+
+    private function isMultipleOfThreeAndFive(int $number): bool
+    {
+        return $this->isMultipleOfThree($number) && $this->isMultipleOfFive($number);
+    }
+
+    private function isOnlyMultipleOfThree(int $number)
+    {
+        return $this->isMultipleOfThree($number) && !$this->isMultipleOfFive($number);
+    }
+
+    private function isOnlyMultipleOfFive(int $number): bool
+    {
+        return !$this->isMultipleOfThree($number) && $this->isMultipleOfFive($number);
     }
 }
