@@ -13,7 +13,7 @@ class KataFizzBuzzTest extends TestCase
         $this->assertEquals(31, $kata->fizzbuzz(31));
     }
 
-    public function testCanReplaceMultiplesOfThreeWithFizz()
+    public function testCanReplaceMultiplesOfThreeWithFizz(): void
     {
         $kata = new Kata();
 
@@ -22,7 +22,7 @@ class KataFizzBuzzTest extends TestCase
         $this->assertEquals('Fizz', $kata->fizzbuzz($number));
     }
 
-    public function testCanReplaceMultiplesOfFiveWithBuzz()
+    public function testCanReplaceMultiplesOfFiveWithBuzz(): void
     {
         $kata = new Kata();
 
@@ -31,7 +31,7 @@ class KataFizzBuzzTest extends TestCase
         $this->assertEquals('Buzz', $kata->fizzbuzz($number));
     }
 
-    public function testCanReplaceMultiplesOfThreeAndFiveWithFizzBuzz()
+    public function testCanReplaceMultiplesOfThreeAndFiveWithFizzBuzz(): void
     {
         $kata = new Kata();
 
@@ -82,7 +82,7 @@ class KataFizzBuzzTest extends TestCase
         return $this->isMultipleOfThree($number) && $this->isMultipleOfFive($number);
     }
 
-    private function isOnlyMultipleOfThree(int $number)
+    private function isOnlyMultipleOfThree(int $number): bool
     {
         return $this->isMultipleOfThree($number) && !$this->isMultipleOfFive($number);
     }

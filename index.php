@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/Kata.php';
+require_once __DIR__ . '/src/Kata.php';
 
 $kata = new Kata();
 
